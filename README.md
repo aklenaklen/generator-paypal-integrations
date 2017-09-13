@@ -21,7 +21,7 @@ Configure the environment variables or the .env file if you had it generated.
 
 ## Execute
 ```
-npm run build && npm run start
+npm run build && npm run start 
 ```
 
 
