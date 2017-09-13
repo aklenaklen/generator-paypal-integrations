@@ -58,9 +58,12 @@ module.exports = class extends Generator {
         }
 
         if (this.props.dotenv) {
-            this.fs.copy(
+            this.fs.copyTpl(
                 this.templatePath(".env"),
                 this.destinationPath(".env"),
+                this.props,
+                null,
+                { globOptions: { dot: true } }
             );
         }
     }
