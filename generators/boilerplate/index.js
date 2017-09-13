@@ -20,7 +20,7 @@ module.exports = class extends Generator {
 
     writing() {
         this.fs.copy(this.templatePath("static/"), this.destinationPath(), { globOptions: { dot: true } });
-        this.fs.copy(this.templatePath("_package.json"), this.destinationPath("package.json"), this.props);
+        this.fs.copyTpl(this.templatePath("_package.json"), this.destinationPath("package.json"), this.props);
     }
 
     install() {
