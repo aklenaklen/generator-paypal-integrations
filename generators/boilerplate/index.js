@@ -3,10 +3,6 @@ const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 
-const config = {
-    name: "test-package"
-}
-
 module.exports = class extends Generator {
     prompting() {
 
@@ -23,15 +19,8 @@ module.exports = class extends Generator {
     }
 
     writing() {
-
-        this.fs.copyTpl(
-            this.templatePath(),
-            this.destinationPath(),
-            this.props,
-            null,
-            { globOptions: { dot: true } }
-        );
-
+        this.fs.copy(this.templatePath("static/"), this.destinationPath(), { globOptions: { dot: true } });
+        this.fs.copy(this.templatePath("_package.json"), this.destinationPath("package.json"), this.props);
     }
 
     install() {
