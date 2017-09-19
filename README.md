@@ -15,15 +15,15 @@ For linux/mac users only.  Windows users you will need to find a way to add "yar
 export PATH="$(yarn global bin):$PATH"
 ```
 
+### Install Yeoman
 First, install [Yeoman](http://yeoman.io) and generator-hapi-middleman using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
-# If you don't have yarn installed.
-npm install -g yarn
 yarn global add yo
 yarn global add generator-hapi-middleman
 ```
 
+## Generate 
 Then generate your new project:
 
 ```bash
@@ -35,8 +35,8 @@ Configure the environment variables or the .env file if you had it generated.
 
 ## Execute
 ```
-yarn run build
-yarn run start  
+yarn build
+yarn start  
 ```
 
 

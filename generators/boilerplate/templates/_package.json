@@ -19,7 +19,8 @@
     "release": "yarn test && yarn run build && yarn publish --new-version",
     "release:quick": "git add -A && git commit -m 'Quick Release Patch' && yarn run release patch",
     "postversion": "git push && git push --follow-tags",
-    "reinstall": "rimraf node_modules yarn.lock && yarn install"
+    "reinstall": "rimraf node_modules yarn.lock && yarn install",
+    "start": "node -r dotenv/config lib/index.js"
   },
   "dependencies": {
     "dotenv": "^4.0.0",
