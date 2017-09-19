@@ -1,4 +1,4 @@
-# generator-hapi-middleman [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > Yeoman generator for hapi-middleman modules
 
 ## Installation
@@ -6,8 +6,8 @@
 First, install [Yeoman](http://yeoman.io) and generator-hapi-middleman using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
-npm install -g yo
-npm install -g generator-hapi-middleman
+yarn install -g yo
+yarn install -g generator-hapi-middleman
 ```
 
 Then generate your new project:
@@ -21,7 +21,8 @@ Configure the environment variables or the .env file if you had it generated.
 
 ## Execute
 ```
-npm run build && npm run start  
+yarn run build
+yarn run start  
 ```
 
 

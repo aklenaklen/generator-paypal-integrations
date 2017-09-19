@@ -53,7 +53,7 @@ module.exports = class extends Generator {
         if (this.props.plugins.indexOf("PayPal-Intacct") !== -1 && this.props.paypalIntacct.indexOf("Invoicing") !== -1) {
             this.fs.copy(
                 this.templatePath("plugins/paypal-intacct-invoicing.ts"),
-                this.destinationPath("src/plugins/paypal-intacct-invoicing.ts"),
+                this.destinationPath("src/plugins/paypal-intacct-invoicing.ts")
             );
         }
 
@@ -74,7 +74,7 @@ module.exports = class extends Generator {
             npm: true,
         });
         if (this.props.plugins.indexOf("PayPal-Intacct") !== -1) {
-            this.npmInstall(["hapi-middleman-paypal-intacct"], { 'save': true });
+            this.npmInstall(["hapi-middleman-paypal-intacct@^0"], { 'save': true });
         }
     }
 };
