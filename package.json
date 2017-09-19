@@ -54,6 +54,6 @@
   "repository": "trainerbill/generator-hapi-middleman",
   "license": "MIT",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=6.0.0"
   }
 }
