@@ -9,19 +9,17 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
+    "coverage": "nyc blue-tape test/**/*-spec.ts | tap-spec && nyc report --reporter=text",
     "clean": "rimraf lib",
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
-    "build": "npm run clean && npm run lint && echo Using TypeScript && tsc --version && tsc --pretty",
-    "build:quick": "npm run clean && echo Using TypeScript && tsc --version && tsc --pretty",
-    "test": "npm run build && mocha --compilers ts:ts-node/register --recursive 'test/**/*-spec.ts'",
-    "coverage": "nyc --include='src/**/*.ts' --reporter=text --reporter=html --reporter=lcov mocha --compilers ts:ts-node/register --recursive 'test/**/*.test.ts'",
-    "watch": "npm run build -- --watch",
-    "watch:test": "npm run test -- --watch",
-    "start": "node -r dotenv/config lib/index.js",
-    "reinstall": "rimraf node_modules package-lock.json && npm install",
-    "release": "npm test && npm run build && npm version --",
-    "release:quick": "npm test && npm run build && git add -A && git commit -m 'Quick Release Patch' && npm version patch && git push --tags",
-    "postversion": "npm publish && git push && git push --tags"
+    "build": "yarn run clean && echo Using TypeScript && tsc --version && tsc --pretty",
+    "test": "yarn run lint && yarn run coverage",
+    "watch": "yarn run build --watch",
+    "watch:test": "yarn test --watch",
+    "release": "yarn test && yarn run build && yarn publish --new-version",
+    "release:quick": "git add -A && git commit -m 'Quick Release Patch' && yarn run release patch",
+    "postversion": "git push && git push --follow-tags",
+    "reinstall": "rimraf node_modules yarn.lock && yarn install"
   },
   "dependencies": {
     "dotenv": "^4.0.0",

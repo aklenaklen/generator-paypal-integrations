@@ -71,10 +71,11 @@ module.exports = class extends Generator {
     install() {
         this.installDependencies({
             bower: false,
-            npm: true,
+            npm: false,
+            yarn: true
         });
         if (this.props.plugins.indexOf("PayPal-Intacct") !== -1) {
-            this.npmInstall(["hapi-middleman-paypal-intacct@^0"], { 'save': true });
+            this.yarnInstall(["hapi-middleman-paypal-intacct"], { 'save': true });
         }
     }
 };
