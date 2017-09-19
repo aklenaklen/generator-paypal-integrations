@@ -3,11 +3,25 @@
 
 ## Installation
 
+### Install Yarn
+You can use npm if you know what you are doing.  This documentation will use yarn.
+```
+npm install -g yarn
+```
+
+### Configure yarn
+For linux/mac users only.  Windows users you will need to find a way to add "yarn global bin" to your executable location.
+```
+export PATH="$(yarn global bin):$PATH"
+```
+
 First, install [Yeoman](http://yeoman.io) and generator-hapi-middleman using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
-yarn install -g yo
-yarn install -g generator-hapi-middleman
+# If you don't have yarn installed.
+npm install -g yarn
+yarn global add yo
+yarn global add generator-hapi-middleman
 ```
 
 Then generate your new project:
