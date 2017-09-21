@@ -47,18 +47,6 @@ module.exports = class extends Generator {
             name: 'c9',
             message: 'Deploying to C9?',
             default: false,
-        },
-        {
-            type: 'input',
-            name: 'c9user',
-            message: 'C9 Username',
-            when: (answers) => answers.c9,
-        },
-        {
-            type: 'input',
-            name: 'c9workspace',
-            message: 'C9 Workspace',
-            when: (answers) => answers.c9,
         }];
 
         return this.prompt(prompts).then(props => {
