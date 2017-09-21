@@ -10,6 +10,12 @@ module.exports = class extends Generator {
             type: 'input',
             name: 'packageName',
             message: 'Project Name:',
+        },
+        {
+            type: 'confirm',
+            name: 'c9',
+            message: 'Deploying to C9?',
+            default: false,
         }];
 
         return this.prompt(prompts).then(props => {
@@ -19,7 +25,14 @@ module.exports = class extends Generator {
     }
 
     writing() {
-        this.fs.copy(this.templatePath("static/"), this.destinationPath(), { globOptions: { dot: true } });
+        if (this.props.c9) {
+            this.fs.copy(this.templatePath("_c9"), this.destinationPath(".c9"));
+        }
+        this.fs.copy(this.templatePath("_editorconfig"), this.destinationPath(".editorconfig"));
+        this.fs.copy(this.templatePath("_gitignore"), this.destinationPath(".gitignore"));
+        this.fs.copy(this.templatePath("_nycrc"), this.destinationPath(".nycrc"));
+        this.fs.copy(this.templatePath("tsconfig.json"), this.destinationPath("tsconfig.json"));
+        this.fs.copy(this.templatePath("tslint.json"), this.destinationPath("tslint.json"));
         this.fs.copyTpl(this.templatePath("_package.json"), this.destinationPath("package.json"), this.props);
     }
 

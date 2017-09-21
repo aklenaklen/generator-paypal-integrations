@@ -2,6 +2,7 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
+const pkg = require('../../package.json');
 
 module.exports = class extends Generator {
     initializing() {
@@ -11,7 +12,7 @@ module.exports = class extends Generator {
     prompting() {
         // Have Yeoman greet the user.
         this.log(yosay(
-            'Welcome to the best ' + chalk.red('generator-hapi-middleman') + ' generator!'
+            'Welcome to the best ' + chalk.red('generator-hapi-middleman') + ' generator! v' + pkg.version
         ));
 
         const prompts = [{
