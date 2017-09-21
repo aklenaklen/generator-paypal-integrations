@@ -35,6 +35,12 @@ module.exports = class extends Generator {
             name: 'dotenv',
             message: 'Create .env file?',
             default: false,
+        },
+        {
+            type: 'confirm',
+            name: 'vscode',
+            message: 'Using vscode?',
+            default: false,
         }];
 
         return this.prompt(prompts).then(props => {
@@ -44,11 +50,9 @@ module.exports = class extends Generator {
 
     writing() {
         this.fs.copyTpl(
-            this.templatePath("base/"),
+            this.templatePath("src/"),
             this.destinationPath(),
-            this.props,
-            null,
-            { globOptions: { dot: true } }
+            this.props
         );
 
         if (this.props.plugins.indexOf("PayPal-Intacct") !== -1 && this.props.paypalIntacct.indexOf("Invoicing") !== -1) {
@@ -60,11 +64,17 @@ module.exports = class extends Generator {
 
         if (this.props.dotenv) {
             this.fs.copyTpl(
-                this.templatePath(".env"),
+                this.templatePath("_env"),
                 this.destinationPath(".env"),
-                this.props,
-                null,
-                { globOptions: { dot: true } }
+                this.props
+            );
+        }
+
+        if (this.props.vscode) {
+            this.fs.copyTpl(
+                this.templatePath("_vscode"),
+                this.destinationPath(".vscode"),
+                this.props
             );
         }
     }
