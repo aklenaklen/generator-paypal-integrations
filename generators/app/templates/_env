@@ -2,7 +2,11 @@
 PAYPAL_MODE=
 PAYPAL_CLIENT_ID=
 PAYPAL_CLIENT_SECRET=
+<% if (plugins.indexOf("PayPal-Intacct") !== -1) { -%>
+PAYPAL_WEBHOOK_HOSTNAME=https://<%= c9workspace %>-<%= c9user %>.c9users.io/paypal/webhooks/listen
+<% } else { -%>
 PAYPAL_WEBHOOK_HOSTNAME=
+<% } -%>
 <% } -%>
 <% if (plugins.indexOf("PayPal-Intacct") !== -1) { -%>
 INTACCT_SENDER_ID=

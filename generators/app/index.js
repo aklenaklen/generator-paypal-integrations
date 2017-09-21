@@ -41,6 +41,24 @@ module.exports = class extends Generator {
             name: 'vscode',
             message: 'Using vscode?',
             default: false,
+        },
+        {
+            type: 'confirm',
+            name: 'c9',
+            message: 'Deploying to C9?',
+            default: false,
+        },
+        {
+            type: 'input',
+            name: 'c9user',
+            message: 'C9 Username',
+            when: (answers) => answers.c9,
+        },
+        {
+            type: 'input',
+            name: 'c9workspace',
+            message: 'C9 Workspace',
+            when: (answers) => answers.c9,
         }];
 
         return this.prompt(prompts).then(props => {
@@ -76,6 +94,10 @@ module.exports = class extends Generator {
                 this.destinationPath(".vscode"),
                 this.props
             );
+        }
+
+        if (this.props.c9) {
+            this.fs.copy(this.templatePath("_c9"), this.destinationPath(".c9"));
         }
     }
 
