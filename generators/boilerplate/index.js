@@ -10,7 +10,13 @@ module.exports = class extends Generator {
             type: 'input',
             name: 'packageName',
             message: 'Project Name:',
-        }];
+        },
+        {
+            type: 'confirm',
+            name: 'vscode',
+            message: 'Using vscode?',
+            default: false,
+        },];
 
         return this.prompt(prompts).then(props => {
             // To access props later use this.props.someAnswer;
@@ -25,6 +31,7 @@ module.exports = class extends Generator {
         this.fs.copy(this.templatePath("tsconfig.json"), this.destinationPath("tsconfig.json"));
         this.fs.copy(this.templatePath("tslint.json"), this.destinationPath("tslint.json"));
         this.fs.copyTpl(this.templatePath("_package.json"), this.destinationPath("package.json"), this.props);
+        this.fs.copy(this.templatePath("_vscode"), this.destinationPath(".vscode"));
     }
 
     install() {
