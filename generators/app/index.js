@@ -43,15 +43,16 @@ module.exports = class extends Generator {
             default: false,
         },
         {
-            type: 'checkbox',
+            type: 'list',
             name: 'deploy',
-            message: 'Deploy to?',
+            message: 'Deploy to:',
             default: "None",
             choices: ["C9", "None"],
         }];
 
         return this.prompt(prompts).then(props => {
             this.props = props;
+            console.log(this.props);
         });
     }
 
