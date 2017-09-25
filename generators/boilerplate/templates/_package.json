@@ -21,8 +21,7 @@
     "postversion": "git push && git push --follow-tags",
     "reinstall": "rimraf node_modules yarn.lock && yarn install",
     "start": "node -r dotenv/config lib/index.js",
-    "gupdate": "yarn global add generator-hapi-middleman --latest",
-    "regenerate": "rimraf * .* && yo hapi-middleman"
+    "gupdate": "yarn global add generator-hapi-middleman --latest"
   },
   "dependencies": {
     "dotenv": "^4.0.0",
