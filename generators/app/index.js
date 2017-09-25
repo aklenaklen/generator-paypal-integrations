@@ -51,6 +51,9 @@ module.exports = class extends Generator {
         }];
 
         return this.prompt(prompts).then(props => {
+            const now = new Date();
+            now.setDate(now.getDate() - 1 );
+            props.invoiceStartDate = `${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`;
             this.props = props;
             console.log(this.props);
         });
