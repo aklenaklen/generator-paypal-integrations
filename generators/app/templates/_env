@@ -2,7 +2,7 @@
 PAYPAL_MODE=
 PAYPAL_CLIENT_ID=
 PAYPAL_CLIENT_SECRET=
-<% if (plugins.indexOf("PayPal-Intacct") !== -1) { -%>
+<% if (deploy === 'C9') { -%>
 PAYPAL_WEBHOOK_HOSTNAME=https://<%= process.env.C9_HOSTNAME %>/paypal/webhooks/listen
 <% } else { -%>
 PAYPAL_WEBHOOK_HOSTNAME=

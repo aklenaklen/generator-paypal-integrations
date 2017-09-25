@@ -43,10 +43,11 @@ module.exports = class extends Generator {
             default: false,
         },
         {
-            type: 'confirm',
-            name: 'c9',
-            message: 'Deploying to C9?',
-            default: false,
+            type: 'checkbox',
+            name: 'deploy',
+            message: 'Deploy to?',
+            default: "None",
+            choices: ["C9", "None"],
         }];
 
         return this.prompt(prompts).then(props => {
@@ -84,7 +85,7 @@ module.exports = class extends Generator {
             );
         }
 
-        if (this.props.c9) {
+        if (this.props.deploy === "C9") {
             this.fs.copy(this.templatePath("_c9"), this.destinationPath(".c9"));
         }
     }
