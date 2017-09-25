@@ -1,6 +1,6 @@
 {
   "name": "generator-hapi-middleman",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "Yeoman generator for hapi-middleman modules",
   "homepage": "https://github.com/trainerbill/generator-hapi-middleman",
   "author": {
