@@ -23,21 +23,10 @@ yarn global add yo
 yarn global add generator-hapi-middleman
 ```
 
-## Generate 
-Then generate your new project:
+### Run subgenerator
 
-```bash
-yo hapi-middleman
-```
+* [Intacct](generators/intacct/README.md)
 
-## Configure
-Configure the environment variables or the .env file if you had it generated.
-
-## Execute
-```
-yarn build
-yarn start  
-```
 
 
 ## Getting To Know Yeoman
