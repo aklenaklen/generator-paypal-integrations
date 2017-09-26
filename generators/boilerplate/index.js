@@ -39,7 +39,7 @@ module.exports = class extends Generator {
         const files = [];
         this.fs.store.each((file, index) => {
             const tPath = path.parse(file.path);
-            if(tPath.dir === "/home/athroener/vscode/gentest/src/plugins") {
+            if(tPath.dir === `${process.cwd()}/src/plugins`) {
                 files.push({
                     filename: tPath.base,
                     variable: camelcase(tPath.name)
