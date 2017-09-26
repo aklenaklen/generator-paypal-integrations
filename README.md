@@ -25,7 +25,7 @@ yarn global add generator-hapi-middleman
 
 ### Run subgenerator
 
-* [Intacct](generators/intacct/README.md)
+* [Intacct](docs/intacct/README.md)
 
 
 

@@ -14,3 +14,6 @@ yarn start
 
 ## Intacct Configuration
 For environment variable configuration see the [hapi-middleman-paypal-intacct package](https://github.com/trainerbill/hapi-middleman-paypal-intacct)
+
+## Deployment
+* [C9](c9.md)
