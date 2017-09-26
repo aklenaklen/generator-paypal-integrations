@@ -1,13 +1,13 @@
 import { PluginRegistrationObject } from "hapi";
 import { goodGlueRegistration  } from "./good";
 <% for(var i=0; i < files.length; i++) { -%>
-import <%= files[i].variable %> from "./<%= files[i].filename %>";
+import <%= files[i].importvariable %> from "./<%= files[i].importname %>";
 <% } -%>
 
 const plugins = [
     goodGlueRegistration,
 <% for(var i=0; i < files.length; i++) { -%>
-    ...<%= files[i].variable %>,
+    ...<%= files[i].importvariable %>,
 <% } -%>
 ];
 

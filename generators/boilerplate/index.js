@@ -41,8 +41,8 @@ module.exports = class extends Generator {
             const tPath = path.parse(file.path);
             if(tPath.dir === `${process.cwd()}/src/plugins`) {
                 files.push({
-                    filename: tPath.base,
-                    variable: camelcase(tPath.name)
+                    importname: tPath.name,
+                    importvariable: camelcase(tPath.name)
                 })
             }
         });
