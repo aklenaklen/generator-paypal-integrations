@@ -45,11 +45,6 @@ module.exports = class extends Generator {
     }
 
     writing() {
-        this.fs.copyTpl(
-            this.templatePath("src/"),
-            this.destinationPath("src/"),
-            this.props
-        );
 
         this.fs.copy(
             this.templatePath("plugins/paypal-intacct-invoicing.ts"),
@@ -71,13 +66,6 @@ module.exports = class extends Generator {
     }
 
     install() {
-        this.installDependencies({
-            bower: false,
-            npm: false,
-            yarn: true
-        });
-
         this.yarnInstall(["hapi-middleman-paypal-intacct"], { 'save': true });
-
     }
 };

@@ -2,6 +2,8 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
+const path = require('path');
+const camelcase = require('camelcase');
 
 module.exports = class extends Generator {
     prompting() {
@@ -25,6 +27,7 @@ module.exports = class extends Generator {
     }
 
     writing() {
+
         this.fs.copy(this.templatePath("_editorconfig"), this.destinationPath(".editorconfig"));
         this.fs.copy(this.templatePath("_gitignore"), this.destinationPath(".gitignore"));
         this.fs.copy(this.templatePath("_nycrc"), this.destinationPath(".nycrc"));
@@ -32,9 +35,29 @@ module.exports = class extends Generator {
         this.fs.copy(this.templatePath("tslint.json"), this.destinationPath("tslint.json"));
         this.fs.copyTpl(this.templatePath("_package.json"), this.destinationPath("package.json"), this.props);
         this.fs.copy(this.templatePath("_vscode"), this.destinationPath(".vscode"));
+
+        const files = [];
+        this.fs.store.each((file, index) => {
+            const tPath = path.parse(file.path);
+            if(tPath.dir === "/home/athroener/vscode/gentest/src/plugins") {
+                files.push({
+                    filename: tPath.base,
+                    variable: camelcase(tPath.name)
+                })
+            }
+        });
+        this.fs.copyTpl(
+            this.templatePath("src/"),
+            this.destinationPath("src/"),
+            { files: files }
+        );
     }
 
     install() {
-        // this.installDependencies();
+        this.installDependencies({
+            bower: false,
+            npm: false,
+            yarn: true
+        });
     }
 };
