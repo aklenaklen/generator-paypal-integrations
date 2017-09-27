@@ -14,19 +14,37 @@ module.exports = class extends Generator {
             message: 'Project Name:',
         },
         {
+            type: 'list',
+            name: 'deploy',
+            message: 'Deploy to:',
+            default: "None",
+            choices: ["C9", "None"],
+        },
+        {
             type: 'confirm',
             name: 'vscode',
             message: 'Using vscode?',
             default: false,
-        },];
+        },
+        {
+            type: 'confirm',
+            name: 'cors',
+            message: 'Enable CORS on public connection?',
+            default: false,
+        }];
 
         return this.prompt(prompts).then(props => {
             // To access props later use this.props.someAnswer;
             this.props = props;
+            this.config.set(this.props);
         });
     }
 
     writing() {
+
+        if (this.props.deploy === "C9") {
+            this.fs.copy(this.templatePath("_c9"), this.destinationPath(".c9"));
+        }
 
         this.fs.copy(this.templatePath("_editorconfig"), this.destinationPath(".editorconfig"));
         this.fs.copy(this.templatePath("_gitignore"), this.destinationPath(".gitignore"));
@@ -49,7 +67,7 @@ module.exports = class extends Generator {
         this.fs.copyTpl(
             this.templatePath("src/"),
             this.destinationPath("src/"),
-            { files: files }
+            { files: files, ...this.props }
         );
     }
 

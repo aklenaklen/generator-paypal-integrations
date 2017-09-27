@@ -24,7 +24,7 @@ yarn global add generator-hapi-middleman
 ```
 
 ### Run subgenerator
-
+* [PayPal REST Server](docs/paypalrest/index.md)
 * [Intacct](docs/intacct/index.md)
 
 
