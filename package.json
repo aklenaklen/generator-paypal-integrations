@@ -1,6 +1,6 @@
 {
   "name": "generator-paypal-integrations",
-  "version": "0.0.37",
+  "version": "0.0.38",
   "description": "Yeoman generator for PayPal Integrations",
   "homepage": "https://github.com/trainerbill/generator-paypal-integrations",
   "author": {
