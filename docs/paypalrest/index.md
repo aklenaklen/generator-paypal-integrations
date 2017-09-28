@@ -8,8 +8,7 @@ yo hapi-middleman:paypalrest
 
 ## Execute
 ```
-yarn build
-yarn start  
+yarn start:dev 
 ```
 
 ## Intacct Configuration

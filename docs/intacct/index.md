@@ -8,8 +8,7 @@ yo hapi-middleman:intacct
 
 ## Execute
 ```
-yarn build
-yarn start  
+yarn start:dev   
 ```
 
 ## Intacct Configuration

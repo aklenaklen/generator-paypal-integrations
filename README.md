@@ -23,6 +23,15 @@ yarn global add yo
 yarn global add generator-hapi-middleman
 ```
 
+### Upgrade Generator
+```
+yarn global add generator-hapi-middleman --latest
+```
+or if you already generated a project
+```
+yarn gupdate
+```
+
 ### Run subgenerator
 * [PayPal REST Server](docs/paypalrest/index.md)
 * [Intacct](docs/intacct/index.md)
