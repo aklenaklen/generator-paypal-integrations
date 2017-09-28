@@ -42,7 +42,6 @@ module.exports = class extends Generator {
             name: 'webhookroute',
             message: 'Webhook Route',
             default: "/paypal/webhooks/listen",
-            when: () => this.options.webhook,
             store: true,
         }];
 
