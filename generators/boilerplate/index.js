@@ -99,10 +99,12 @@ module.exports = class extends Generator {
             bower: false,
             npm: false,
             yarn: true
+        }).then(() => {
+            this.spawnCommand('yarn', ['build']);
         });
     }
 
     end() {
-        console.log(chalk.red("Configure the .env.development.json file and execute 'yarn start:dev'"));
+        console.log(chalk.red("Execute 'yarn start:dev'"));
     }
 };

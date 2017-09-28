@@ -14,6 +14,12 @@ module.exports = class extends Generator {
             default: false,
             desc: "Stores all prompts for testing only",
         });
+
+        this.option('force-webhook', {
+            type: Boolean,
+            default: false,
+            desc: "Forces a webhook route",
+        });
     }
 
     prompting() {
@@ -38,11 +44,20 @@ module.exports = class extends Generator {
             store: true,
         },
         {
+            type: 'confirm',
+            name: 'webhooks',
+            message: 'Enable Webhooks?',
+            default: false,
+            store: true,
+            when: !this.options.forceWebhook
+        },
+        {
             type: 'input',
             name: 'webhookroute',
             message: 'Webhook Route',
             default: "/paypal/webhooks/listen",
             store: true,
+            when: (answers) => answers.webhooks || this.options.forceWebhook,
         }];
 
         return this.prompt(prompts).then(props => {

@@ -28,9 +28,8 @@ module.exports = class extends Generator {
                 `Welcome to ${chalk.red('Intacct')} generator! v${pkg.version}`
             ));
         }
-        this.log(this.options);
         this.composeWith(require.resolve('../boilerplate'));
-        this.composeWith(require.resolve('../paypalconfig'), { storeAll: this.options.storeAll});
+        this.composeWith(require.resolve('../paypalconfig'), { storeAll: this.options.storeAll, forceWebhook: true });
     }
 
     prompting() {

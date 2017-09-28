@@ -6,15 +6,7 @@ async function start() {
     try {
         const server = await glue.compose(manifest);
         const servers = await server.start();
-        server.table().map((connection: any) => {
-            const routes = connection
-                            .table
-                            .map((route: any) => JSON.stringify({ method: route.method, path: route.path }, null, 2));
-            server.log("info", `
-Server: ${connection.info.uri}
-Labels ${connection.labels.join(",")}
-Routes: ${routes}`);
-        });
+        server.connections.forEach((connection: any) => server.log(["info", "connection"], connection.info));
     }  catch (err) {
         throw err;
     }
