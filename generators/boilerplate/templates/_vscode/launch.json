@@ -4,20 +4,18 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
         {
             "type": "node",
-            "runtimeArgs": [
-                "--preserve-symlinks"
-            ],
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceRoot}/lib/index.js",
-            "cwd": "${workspaceRoot}",
-            "outFiles": ["${workspaceRoot}/lib/**/*.js"],
-            "sourceMaps": true,
-            "preLaunchTask": "build",
-            "envFile": "${workspaceRoot}/.env"
+            "name": "Launch Server",
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/ts-node",
+            "runtimeArgs": [
+                "-r",
+                "dot-env-json/lib/config",
+                "${workspaceRoot}/src/" ],
+            "env": {
+                "NODE_ENV": "development"
+            }
         },
         {
             "type": "node",

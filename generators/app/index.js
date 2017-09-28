@@ -13,17 +13,25 @@ module.exports = class extends Generator {
         ));
 
         const prompts = [{
-            type: 'checkbox',
+            type: 'list',
             name: 'plugins',
             message: 'Which integrations would you like to enable',
-            choices: ["PayPal-Intacct"],
+            choices: ["PayPal-REST-Server", "PayPal-Intacct"],
         },];
 
         return this.prompt(prompts).then(props => {
-            console.log(props);
+
             if (props.plugins.indexOf("PayPal-Intacct") !== -1) {
                 this.composeWith(require.resolve('../intacct'));
             }
+            if (props.plugins.indexOf("PayPal-REST-Server") !== -1) {
+                this.composeWith(require.resolve('../paypalrest'));
+            }
+
         });
+    }
+
+    writing() {
+        console.log("app writing");
     }
 };

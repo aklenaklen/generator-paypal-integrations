@@ -2,48 +2,62 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const path = require('path');
 const camelcase = require('camelcase');
+const pkg = require('../../package.json');
+const path = require('path');
 
 module.exports = class extends Generator {
-    prompting() {
 
+    prompting() {
         const prompts = [{
             type: 'input',
             name: 'packageName',
             message: 'Project Name:',
+            store: true,
         },
         {
-            type: 'list',
-            name: 'deploy',
-            message: 'Deploy to:',
-            default: "None",
-            choices: ["C9", "None"],
+            type: 'input',
+            name: 'hostname',
+            message: 'Hostname:',
+            default: process.env.C9_HOSTNAME || "localhost",
+            store: true,
+        },
+        {
+            type: 'input',
+            name: 'publicport',
+            message: 'Public Port:',
+            default: process.env.C9_PORT || 3000,
+            store: true,
+        },
+        {
+            type: 'input',
+            name: 'privateport',
+            message: 'Private Port:',
+            default: 3001,
+            store: true,
         },
         {
             type: 'confirm',
             name: 'vscode',
             message: 'Using vscode?',
             default: false,
-        },
-        {
-            type: 'confirm',
-            name: 'cors',
-            message: 'Enable CORS on public connection?',
-            default: false,
+            store: true,
         }];
 
         return this.prompt(prompts).then(props => {
             // To access props later use this.props.someAnswer;
             this.props = props;
-            this.config.set(this.props);
         });
     }
 
     writing() {
-
-        if (this.props.deploy === "C9") {
+        console.log("boilerplate writing");
+        if (process.env.C9_HOSTNAME) {
             this.fs.copy(this.templatePath("_c9"), this.destinationPath(".c9"));
+        }
+
+        if (this.props.dotenv) {
+            this.fs.copyTpl(this.templatePath("_env.development.json"), this.destinationPath(".env.development.json"), this.props);
         }
 
         this.fs.copy(this.templatePath("_editorconfig"), this.destinationPath(".editorconfig"));
@@ -54,6 +68,15 @@ module.exports = class extends Generator {
         this.fs.copyTpl(this.templatePath("_package.json"), this.destinationPath("package.json"), this.props);
         this.fs.copy(this.templatePath("_vscode"), this.destinationPath(".vscode"));
 
+        this.fs.extendJSON(this.destinationPath(".env.development.json"), {
+            "HOSTNAME": this.props.hostname,
+            "PUBLIC_PORT": this.props.publicport,
+            "PRIVATE_PORT": this.props.privateport,
+        });
+    }
+
+    conflicts() {
+        // Not ideal but this requires the subgenerators write to plugins dir first.
         const files = [];
         this.fs.store.each((file, index) => {
             const tPath = path.parse(file.path);
@@ -67,7 +90,7 @@ module.exports = class extends Generator {
         this.fs.copyTpl(
             this.templatePath("src/"),
             this.destinationPath("src/"),
-            { files: files, ...this.props }
+            { files: files },
         );
     }
 
@@ -77,5 +100,9 @@ module.exports = class extends Generator {
             npm: false,
             yarn: true
         });
+    }
+
+    end() {
+        console.log(chalk.red("Configure the .env.development.json file and execute 'yarn start:dev'"));
     }
 };

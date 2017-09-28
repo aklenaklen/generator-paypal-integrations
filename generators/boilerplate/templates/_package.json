@@ -9,22 +9,21 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "coverage": "nyc blue-tape test/**/*-spec.ts | tap-spec && nyc report --reporter=text",
     "clean": "rimraf lib",
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "build": "yarn run clean && echo Using TypeScript && tsc --version && tsc --pretty",
-    "test": "yarn run lint && yarn run coverage",
     "watch": "yarn run build --watch",
-    "watch:test": "yarn test --watch",
     "release": "yarn test && yarn run build && yarn publish --new-version",
     "release:quick": "git add -A && git commit -m 'Quick Release Patch' && yarn run release patch",
     "postversion": "git push && git push --follow-tags",
     "reinstall": "rimraf node_modules yarn.lock && yarn install",
-    "start": "node -r dotenv/config lib/index.js",
+    "start": "cross-env NODE_ENV=production node -r dot-env-json/lib/config lib/index.js",
+    "start:dev": "cross-env NODE_ENV=development ts-node -r dot-env-json/lib/config src/index.ts",
     "gupdate": "yarn global add generator-hapi-middleman --latest"
   },
   "dependencies": {
-    "dotenv": "^4.0.0",
+    "cross-env": "^5.0.5",
+    "dot-env-json": "^0.0.7",
     "glue": "^4.2.0",
     "good": "^7.2.0",
     "good-console": "^6.4.0",
@@ -33,7 +32,6 @@
     "hapi": "^16.4.3"
   },
   "devDependencies": {
-    "@types/dotenv": "^4.0.0",
     "@types/hapi": "^16.1.6",
     "nyc": "^10.0.0",
     "rimraf": "^2.0.0",

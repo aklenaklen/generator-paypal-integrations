@@ -2,24 +2,51 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const pkg = require('../../package.json');
 
 module.exports = class extends Generator {
+
+    constructor(args, opts) {
+        super(args, opts);
+
+        this.option('say', {
+            type: Boolean,
+            default: true,
+            desc: "Yosay!"
+        });
+
+        this.option('store-all', {
+            type: Boolean,
+            default: false,
+            desc: "Stores all prompts for testing only"
+        });
+    }
+
     initializing() {
+        if (this.options["say"]) {
+            this.log(yosay(
+                `Welcome to ${chalk.red('PayPal-REST')} generator! v${pkg.version}`
+            ));
+        }
         this.composeWith(require.resolve('../boilerplate'));
+        this.composeWith(require.resolve('../paypalconfig'), { storeAll: this.options.storeAll});
     }
 
     prompting() {
-        // Have Yeoman greet the user.
-        this.log(yosay(
-            `Welcome to ${chalk.red('PayPal Rest API')} generator! v${pkg.version}`
-        ));
 
         const prompts = [{
+            type: 'list',
+            choices: ["public", "private"],
+            name: 'access',
+            message: 'Public or Private connection?  Public connection is accessible outside localhost',
+            default: "public",
+            store: true,
+        },
+        {
             type: 'confirm',
-            name: 'dotenv',
-            message: 'Create .env file?',
-            default: true,
+            name: 'cors',
+            message: 'Enable CORS?',
+            default: false,
+            store: true,
         }];
 
         return this.prompt(prompts).then(props => {
@@ -28,20 +55,18 @@ module.exports = class extends Generator {
     }
 
     writing() {
-
-        this.fs.copy(
+        this.fs.copyTpl(
             this.templatePath("plugins/paypal-rest.ts"),
-            this.destinationPath("src/plugins/paypal-rest.ts")
+            this.destinationPath("src/plugins/paypal-rest.ts"),
+            this.props,
         );
 
 
-        if (this.props.dotenv) {
-            this.fs.copyTpl(
-                this.templatePath("_env"),
-                this.destinationPath(".env"),
-                this.props
-            );
-        }
+        this.fs.extendJSON(this.destinationPath(".env.development.json"), {
+            "PAYPAL_HAPI_CONNECTION": this.props.access,
+            "PAYPAL_WEBHOOK_ROUTE": this.props.webhookroute,
+            "PAYPAL_REST_ROUTES": "",
+        });
     }
 
     install() {
