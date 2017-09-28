@@ -9,7 +9,7 @@ module.exports = class extends Generator {
     prompting() {
         // Have Yeoman greet the user.
         this.log(yosay(
-            `Welcome to the best ${chalk.red('generator-hapi-middleman')} generator! v${pkg.version}`
+            `Welcome to the best ${chalk.red('generator-paypal-integrations')} generator! v${pkg.version}`
         ));
 
         const prompts = [{

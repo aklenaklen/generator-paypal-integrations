@@ -3,7 +3,7 @@
 
 ## Generate
 ```bash
-yo hapi-middleman:intacct
+yo paypal-integrations:intacct
 ```
 
 ## Execute

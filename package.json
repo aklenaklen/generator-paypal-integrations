@@ -1,8 +1,8 @@
 {
-  "name": "generator-hapi-middleman",
+  "name": "generator-paypal-integrations",
   "version": "0.0.35",
-  "description": "Yeoman generator for hapi-middleman modules",
-  "homepage": "https://github.com/trainerbill/generator-hapi-middleman",
+  "description": "Yeoman generator for PayPal Integrations",
+  "homepage": "https://github.com/trainerbill/generator-paypal-integrations",
   "author": {
     "name": "Andrew Throener",
     "email": "athroener@mystartupsolutions.com",
@@ -14,8 +14,9 @@
   "main": "generators/index.js",
   "keywords": [
     "Yeoman",
+    "PayPal",
     "Hapi",
-    "Middleman",
+    "integration",
     "yeoman-generator"
   ],
   "devDependencies": {
@@ -52,7 +53,7 @@
       "node": true
     }
   },
-  "repository": "trainerbill/generator-hapi-middleman",
+  "repository": "trainerbill/generator-paypal-integrations",
   "license": "MIT",
   "engines": {
     "node": ">=8.0.0"

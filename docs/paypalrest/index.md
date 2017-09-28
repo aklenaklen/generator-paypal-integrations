@@ -3,7 +3,7 @@
 
 ## Generate
 ```bash
-yo hapi-middleman:paypalrest
+yo paypal-integrations:paypalrest
 ```
 
 ## Execute

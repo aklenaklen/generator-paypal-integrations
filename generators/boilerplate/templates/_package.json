@@ -19,7 +19,7 @@
     "reinstall": "rimraf node_modules yarn.lock && yarn install",
     "start": "cross-env NODE_ENV=production node -r dot-env-json/lib/config lib/index.js",
     "start:dev": "cross-env NODE_ENV=development ts-node -r dot-env-json/lib/config src/index.ts",
-    "gupdate": "yarn global add generator-hapi-middleman --latest"
+    "gupdate": "yarn global add generator-paypal-integrations --latest"
   },
   "dependencies": {
     "cross-env": "^5.0.5",

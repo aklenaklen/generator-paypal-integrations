@@ -1,5 +1,5 @@
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> Yeoman generator for hapi-middleman modules
+> Yeoman generator for PayPal Integrations
 
 ## Installation
 
@@ -16,16 +16,16 @@ export PATH="$(yarn global bin):$PATH"
 ```
 
 ### Install Yeoman
-First, install [Yeoman](http://yeoman.io) and generator-hapi-middleman using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-paypal-integrations using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
 yarn global add yo
-yarn global add generator-hapi-middleman
+yarn global add generator-paypal-integrations
 ```
 
 ### Upgrade Generator
 ```
-yarn global add generator-hapi-middleman --latest
+yarn global add generator-paypal-integrations --latest
 ```
 or if you already generated a project
 ```
@@ -50,11 +50,11 @@ yarn gupdate
 MIT © [Andrew Throener]()
 
 
-[npm-image]: https://badge.fury.io/js/generator-hapi-middleman.svg
-[npm-url]: https://npmjs.org/package/generator-hapi-middleman
-[travis-image]: https://travis-ci.org/trainerbill/generator-hapi-middleman.svg?branch=master
-[travis-url]: https://travis-ci.org/trainerbill/generator-hapi-middleman
-[daviddm-image]: https://david-dm.org/trainerbill/generator-hapi-middleman.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/trainerbill/generator-hapi-middleman
-[coveralls-image]: https://coveralls.io/repos/trainerbill/generator-hapi-middleman/badge.svg
-[coveralls-url]: https://coveralls.io/r/trainerbill/generator-hapi-middleman
+[npm-image]: https://badge.fury.io/js/generator-paypal-integrations.svg
+[npm-url]: https://npmjs.org/package/generator-paypal-integrations
+[travis-image]: https://travis-ci.org/trainerbill/generator-paypal-integrations.svg?branch=master
+[travis-url]: https://travis-ci.org/trainerbill/generator-paypal-integrations
+[daviddm-image]: https://david-dm.org/trainerbill/generator-paypal-integrations.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/trainerbill/generator-paypal-integrations
+[coveralls-image]: https://coveralls.io/repos/trainerbill/generator-paypal-integrations/badge.svg
+[coveralls-url]: https://coveralls.io/r/trainerbill/generator-paypal-integrations
