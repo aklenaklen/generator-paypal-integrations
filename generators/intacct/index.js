@@ -70,20 +70,13 @@ module.exports = class extends Generator {
             message: 'What Intacct functionality would you like to enable?',
             choices: ["Invoicing"],
             store: true,
-        },
-        {
-            type: 'input',
-            name: 'paypalemail',
-            message: 'PayPal Email address.',
-            when: (answers) => answers.functionality.indexOf("Invoicing") !== -1,
-            store: true,
         }];
 
         return this.prompt(prompts).then(props => {
-            const now = new Date();
-            now.setDate(now.getDate() - 1 );
-            props.invoiceStartDate = `${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`;
             this.props = props;
+            if (this.props.functionality.indexOf("Invoicing") !== -1) {
+                this.composeWith(require.resolve('../intacctInvoicing'));
+            }
         });
     }
 
@@ -101,17 +94,6 @@ module.exports = class extends Generator {
             "INTACCT_USER_PASSWORD": this.props.intacctuserpassword,
             "INTACCT_COMPANY_ID": this.props.intacctcompanyid,
         });
-        if (this.props.functionality.indexOf("Invoicing") !== -1) {
-            this.fs.extendJSON(this.destinationPath(".env.development.json"), {
-                "PAYPAL_INVOICE_MERCHANT_EMAIL": this.props.paypalemail,
-                "INTACCT_INVOICE_CREATE_AUTO": "true",
-                "INTACCT_INVOICE_REFUND_AUTO": "true",
-                "INTACCT_INVOICE_CREATE_LATER": "every 1 hour",
-                "INTACCT_INVOICE_REFUND_LATER": "every 1 day",
-                "INTACCT_INVOICE_PAYMENT_DEFAULT_ACCOUNT": "",
-                "INTACCT_INVOICE_START_DATE": this.props.invoiceStartDate,
-            });
-        }
     }
 
 
