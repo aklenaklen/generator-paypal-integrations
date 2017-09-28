@@ -30,8 +30,4 @@ module.exports = class extends Generator {
 
         });
     }
-
-    writing() {
-        console.log("app writing");
-    }
 };

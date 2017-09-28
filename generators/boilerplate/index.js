@@ -51,7 +51,6 @@ module.exports = class extends Generator {
     }
 
     writing() {
-        console.log("boilerplate writing");
         if (process.env.C9_HOSTNAME) {
             this.fs.copy(this.templatePath("_c9"), this.destinationPath(".c9"));
         }
