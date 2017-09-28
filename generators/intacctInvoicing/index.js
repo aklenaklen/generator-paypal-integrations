@@ -66,7 +66,7 @@ module.exports = class extends Generator {
             name: 'usdCurrencyAccount',
             message: 'USD Currency Account',
             default: false,
-            when: (answers) => answers.currencyAccounts.indexOf("USD") !== -1,
+            when: (answers) => answers.useCurrencyAccounts && answers.currencyAccounts.indexOf("USD") !== -1,
             store: true,
         },
         {
