@@ -3,6 +3,12 @@
 
 ## Installation
 
+### Install Node 8
+Node 8 is required for this generator.
+```
+nvm use 8
+```
+
 ### Install Yarn
 You can use npm if you know what you are doing.  This documentation will use yarn.
 ```
