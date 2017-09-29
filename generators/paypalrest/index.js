@@ -48,6 +48,13 @@ module.exports = class extends Generator {
             message: 'Enable CORS?',
             default: false,
             store: true,
+        },
+        {
+            type: 'confirm',
+            name: 'webhookHandler',
+            message: 'Custom Webhook Handler?',
+            default: false,
+            store: true,
         }];
 
         return this.prompt(prompts).then(props => {
