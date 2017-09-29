@@ -8,6 +8,7 @@ hapiPayPal.routes.get("paypal_webhooks_listen").custom = async (request, reply, 
     // Handle webhooks here
     // tslint:disable-next-line:no-console
     console.log(request.payload);
+    reply('Got It!');
 };
 <% } -%>
 
