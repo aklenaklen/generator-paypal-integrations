@@ -96,13 +96,11 @@ module.exports = class extends Generator {
         });
     }
 
-
-
     install() {
         this.yarnInstall(["paypal-integrations-intacct"], { 'save': true });
     }
 
     end() {
-        console.log("View configuration at https://github.com/trainerbill/hapi-middleman-paypal-intacct")
+        console.log(chalk.yellow("Intacct Configuration: https://github.com/trainerbill/paypal-integrations-intacct"));
     }
 };
