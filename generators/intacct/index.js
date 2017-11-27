@@ -99,7 +99,7 @@ module.exports = class extends Generator {
 
 
     install() {
-        this.yarnInstall(["hapi-middleman-paypal-intacct"], { 'save': true });
+        this.yarnInstall(["paypal-integrations-intacct"], { 'save': true });
     }
 
     end() {
