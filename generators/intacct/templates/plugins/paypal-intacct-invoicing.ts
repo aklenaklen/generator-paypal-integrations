@@ -3,7 +3,7 @@ import {
     hapiIntacctGlueRegistration,
     hapiPayPalGlueRegistration,
     hapiPayPalIntacctInvoicingGlueRegistration,
-} from "hapi-middleman-paypal-intacct";
+} from "paypal-integrations-intacct";
 
 const plugins = [
     hapiIntacctGlueRegistration,
