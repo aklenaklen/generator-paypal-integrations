@@ -99,11 +99,11 @@ module.exports = class extends Generator {
             npm: false,
             yarn: true
         }).then(() => {
-            this.spawnCommand('yarn', ['build']);
+            this.spawnCommandSync('yarn', ['build']);
         });
     }
 
     end() {
-        console.log(chalk.red("Execute 'yarn start:dev'"));
+        console.log(chalk.green.bold("Execute 'yarn start:dev'"));
     }
 };
